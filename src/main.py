@@ -1,14 +1,15 @@
 # from client import Client
 from tkinter import *
 
+# starting menu - where you can customize what type of messages to expect
 root = Tk()
 root.geometry("480x440")
-# root.geometry("480x840")
 
 is_jerma_button_on = False
 
 off_image = PhotoImage(file="C:\\Users\\rattl\\Desktop\\Projects\\Python\\fake_chatters\\assets\\off-button.png")
 on_image = PhotoImage(file="C:\\Users\\rattl\\Desktop\\Projects\\Python\\fake_chatters\\assets\\on-button.png")
+start_image = PhotoImage(file="C:\\Users\\rattl\\Desktop\\Projects\\Python\\fake_chatters\\assets\\start-button.png")
 
 def create_button(button_image):
     button = Button(root,
@@ -36,7 +37,16 @@ def jerma_button_function(jerma_button) -> bool:
 # creates the toggle button for "Jerma Mode"
 jerma_button = create_button(off_image)
 jerma_button.config(command=lambda: jerma_button_function(jerma_button))
-jerma_button.pack(anchor=CENTER)
+jerma_button.pack()
+
+def start_button_function():
+    # chat window - where you can view your chat's messages
+    chat_window = Toplevel(root)
+    chat_window.geometry("480x840")
+
+start_button = create_button(start_image)
+start_button.config(command=lambda: start_button_function())
+start_button.pack()
 
 if __name__ == "__main__":
     root.mainloop()
