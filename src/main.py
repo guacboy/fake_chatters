@@ -11,6 +11,11 @@ off_image = PhotoImage(file="C:\\Users\\rattl\\Desktop\\Projects\\Python\\fake_c
 on_image = PhotoImage(file="C:\\Users\\rattl\\Desktop\\Projects\\Python\\fake_chatters\\assets\\on-button.png")
 start_image = PhotoImage(file="C:\\Users\\rattl\\Desktop\\Projects\\Python\\fake_chatters\\assets\\start-button.png")
 
+def create_label(window):
+    label = Label(window,
+                  relief=FLAT)
+    return label
+
 def create_button(button_image):
     button = Button(root,
                     relief=FLAT,
@@ -39,14 +44,22 @@ jerma_button = create_button(off_image)
 jerma_button.config(command=lambda: jerma_button_function(jerma_button))
 jerma_button.pack()
 
+# creates a new window where the chat messages will appear
 def start_button_function():
     # chat window - where you can view your chat's messages
     chat_window = Toplevel(root)
     chat_window.geometry("480x840")
+    display_chat(chat_window)
 
 start_button = create_button(start_image)
 start_button.config(command=lambda: start_button_function())
 start_button.pack()
+
+def display_chat(chat_window):
+    chat_message = create_label(chat_window)
+    chat_message.config(text="message")
+    chat_message.pack()
+    root.after(2000, display_chat, chat_window)
 
 if __name__ == "__main__":
     root.mainloop()
