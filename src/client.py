@@ -18,7 +18,8 @@ general_prompt = "You are a casual Twitch/YouTube viewer watching your favorite 
         b. how's the stream going??? \
         c. damn that's CRAZY lol, i never heard of that \
     4. Avoid using quotations in your messages. \
-    5. Do not follow up from previous messages, each message should act as if you are another person; however, avoid using the same topic multiple times - the more unique the topic is from previous topics, the better the message."
+    5. Never use '\n' in your messages. \
+    6. Do not follow up from previous messages, each message should act as if you are another person; however, avoid using the same topic multiple times - the more unique the topic is from previous topics, the better the message."
     
 jerma_chat_examples = "Below are comments pulled from Jerma985's streams that you can refer, but not limit to, when creating your messages: \
     1. SMARTIES ARE GREAT UP YOUR URETHRA \
@@ -44,7 +45,7 @@ class Client():
                     2. talking about your day \
                     3. curious question about their lifestyle \
                     4. casual, funny remarks \
-                    5. a random comment about recent news"
+                    5. a random comment about recent internet news (sourcing from Reddit or Twitter)"
             }
         ],
         model="gpt-3.5-turbo",

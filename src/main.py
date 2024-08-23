@@ -13,11 +13,18 @@ off_image = PhotoImage(file="C:\\Users\\rattl\\Desktop\\Projects\\Python\\fake_c
 on_image = PhotoImage(file="C:\\Users\\rattl\\Desktop\\Projects\\Python\\fake_chatters\\assets\\on-button.png")
 start_image = PhotoImage(file="C:\\Users\\rattl\\Desktop\\Projects\\Python\\fake_chatters\\assets\\start-button.png")
 
-def create_label(window):
-    label = Label(window,
-                  relief=FLAT,
-                  wraplength=250)
-    return label
+def create_text(window):
+    text = Text(window,
+                height=400,
+                width=800,
+                padx=20,
+                pady=20,
+                bg="#18181a",
+                fg="#ffffff",
+                font="Roobert",
+                spacing3=10,
+                wrap=WORD)
+    return text
 
 def create_button(button_image):
     button = Button(root,
@@ -67,14 +74,17 @@ def start_button_function():
     # chat window - where you can view your chat's messages
     chat_window = Toplevel(root)
     chat_window.geometry("480x840")
-    display_chat(chat_window)
+    
+    chat_message = create_text(chat_window)
+    chat_message.pack()
+    display_chat(chat_window, chat_message)
 
 start_button = create_button(start_image)
 start_button.config(command=lambda: start_button_function())
 start_button.pack()
 
 # opens a new window where the chat messages will be displayed
-def display_chat(chat_window):
+def display_chat(chat_window, chat_message):
     trait_list = list()
     
     if chat_window.winfo_exists():
@@ -91,11 +101,9 @@ def display_chat(chat_window):
         if random_trait == "jerma":
             print("Generating a 'Jerma' message.")
             message = Client.jerma_message().choices[0].message.content
-            
-        chat_message = create_label(chat_window)
-        chat_message.config(text=message)
-        chat_message.pack()
-        root.after(60000, display_chat, chat_window)
+        
+        chat_message.insert(END, message + "\n")
+        root.after(20000, display_chat, chat_window, chat_message)
 
 if __name__ == "__main__":
     root.mainloop()
