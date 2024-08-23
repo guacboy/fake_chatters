@@ -1,4 +1,4 @@
-# from client import Client
+from client import Client
 from tkinter import *
 
 # starting menu - where you can customize what type of messages to expect
@@ -13,7 +13,8 @@ start_image = PhotoImage(file="C:\\Users\\rattl\\Desktop\\Projects\\Python\\fake
 
 def create_label(window):
     label = Label(window,
-                  relief=FLAT)
+                  relief=FLAT,
+                  wraplength=250)
     return label
 
 def create_button(button_image):
@@ -55,11 +56,14 @@ start_button = create_button(start_image)
 start_button.config(command=lambda: start_button_function())
 start_button.pack()
 
+# opens a new window where the chat messages will be displayed
 def display_chat(chat_window):
+    message = Client.openai().choices[0].message.content
+    
     chat_message = create_label(chat_window)
-    chat_message.config(text="message")
+    chat_message.config(text=message)
     chat_message.pack()
-    root.after(2000, display_chat, chat_window)
+    root.after(60000, display_chat, chat_window)
 
 if __name__ == "__main__":
     root.mainloop()
