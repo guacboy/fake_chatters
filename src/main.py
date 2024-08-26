@@ -81,7 +81,9 @@ class App:
                 print("Generating a 'Jerma' message.")
                 message = Client.jerma_message().choices[0].message.content
             
+            chat_message.config(state=NORMAL)
             chat_message.insert(END, message + "\n")
+            chat_message.config(state=DISABLED)
             root.after(60000, App.display_chat, chat_window, chat_message)
    
 # creates the toggle button for general mode
