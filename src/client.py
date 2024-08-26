@@ -22,9 +22,12 @@ general_prompt = "You are a casual Twitch/YouTube viewer watching your favorite 
     5. Do not follow up from previous messages, each message should act as if you are another person; however, avoid using the same topic multiple times - the more unique the topic is from previous topics, the better the message. \
     6. Do not send more than one message at a time."
 
-file_path = "C:\\Users\\rattl\\Desktop\\Projects\\Python\\fake_chatters\\data\\"
-with open(file_path + "jerma.json", "r") as file:
+data_file_path = "C:\\Users\\rattl\\Desktop\\Projects\\Python\\fake_chatters\\data\\"
+with open(data_file_path + "jerma.json", "r") as file:
     jerma_chat_example = json.load(file)
+    
+with open(data_file_path + "topic.json", "r") as file:
+    topic_example = json.load(file)
 
 class Client():
     def username():
@@ -50,7 +53,9 @@ class Client():
                     2. talking about your day \
                     3. curious question about their lifestyle \
                     4. casual, funny remarks \
-                    5. a random comment about recent internet news (sourcing from Reddit or Twitter); however, do not mention anything about any images of any kind"
+                    5. a random comment about recent internet news (sourcing from Reddit or Twitter); however, do not mention anything about any images of any kind \
+                In addition, please also include these topics, if any, as top priority for when deciding on what to include in your messages (90% of your messages should contain these topics): \
+                    {topic_example}"
             }
         ],
         model="gpt-3.5-turbo",
@@ -69,6 +74,8 @@ class Client():
                     3. poking fun at the streamer with jokes like, but not limited to: \
                         a. 'your mom' jokes \
                         b. 'youre short' joke \
+                In addition, please also include these topics, if any, as top priority for when deciding on what to include in your messages (90% of your messages should contain these topics): \
+                    {topic_example} \
                 Below are comments pulled from Jerma985's streams that you can refer, but not limit to, when creating your messages: \
                     {jerma_chat_example}"
             }
