@@ -168,6 +168,9 @@ class App:
             root.after((time_scale.get() * 60) * 1000, App.display_chat, chat_window, chat_message)
    
 # creates the toggle button for general mode
+general_label = App.create_label(root)
+general_label.config(text="General Mode")
+general_label.pack()
 general_button = App.create_button(root)
 general_button.config(image=on_image,
                       command=lambda: App.toggle_button("general_button",
@@ -176,6 +179,9 @@ general_button.config(image=on_image,
 general_button.pack()
     
 # creates the toggle button for "Jerma" mode
+jerma_label = App.create_label(root)
+jerma_label.config(text="Jerma985 Mode")
+jerma_label.pack()
 jerma_button = App.create_button(root)
 jerma_button.config(image=off_image,
                     command=lambda: App.toggle_button("jerma_button",
@@ -184,6 +190,9 @@ jerma_button.config(image=off_image,
 jerma_button.pack()
 
 # creates the "add personal topic" button
+topic_label = App.create_label(root)
+topic_label.config(text="Add Your Own Topics")
+topic_label.pack()
 topic_button = App.create_button(root)
 topic_button.config(text="add topic",
                     command=lambda: App.create_topic_window())
@@ -191,7 +200,7 @@ topic_button.pack()
 
 # creates the time interval scale
 time_scale_label1 = App.create_label(root)
-time_scale_label1.config(text="Time Interval b/w Messages (in seconds)")
+time_scale_label1.config(text="Time Interval b/w Messages (in Minutes)")
 time_scale_label1.pack()
 time_scale_label2 = App.create_label(root)
 time_scale_label2.config(text="Min: 5 minutes; Max: 60 minutes")
