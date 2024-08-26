@@ -6,6 +6,7 @@ import json
 # starting menu - where you can customize what type of messages to expect
 root = Tk()
 root.geometry("480x440")
+root.config(bg="#18181a")
 
 data_file_path = "C:\\Users\\rattl\\Desktop\\Projects\\Python\\fake_chatters\\data\\"
 assets_file_path = "C:\\Users\\rattl\\Desktop\\Projects\\Python\\fake_chatters\\assets\\"
@@ -31,10 +32,18 @@ class App:
                     spacing3=10,
                     wrap=WORD)
         return text
+
+    def create_label(window):
+        label = Label(window,
+                      bg="#18181a",
+                      fg="#ffffff",
+                      font="Roobert")
+        return label
     
     # default format for button
     def create_button(window):
         button = Button(window,
+                        bg="#18181a",
                         relief=FLAT,
                         compound=CENTER)
         return button
@@ -58,14 +67,20 @@ class App:
     
     # creates a new window for inserting personal topics
     def create_topic_window():
-        topic_window = Toplevel(root)
+        topic_window = Toplevel(root,
+                                bg="#18181a")
         topic_window.geometry("480x440")
+        
+        topic_instruction = App.create_label(topic_window)
+        topic_instruction.config(text="<Ctrl + S> to close window and save.",
+                                 pady=10)
+        topic_instruction.pack(side=TOP)
         
         topic_entry = App.create_text(topic_window)
         # restores any previous saved data
         with open(data_file_path + "topic.json", "r") as file:
             topic_example = json.load(file)
-        topic_entry.insert(END, "<Ctrl + S> to close window and save.\n" + "".join([word for word in topic_example.values()]))
+        topic_entry.insert(END, "".join([word for word in topic_example.values()]))
         topic_entry.bind("<Control-s>", lambda e: App.add_topic(topic_entry,
                                                                 topic_window))
         topic_entry.pack()
@@ -76,7 +91,7 @@ class App:
         with open(data_file_path + "topic.json", "r") as file:
             topic_example = json.load(file)
             
-        topic_example["topic"] = topic_entry.get("2.0", END)
+        topic_example["topic"] = topic_entry.get("1.0", END)
         
         with open(data_file_path + "topic.json", "w") as file:
             json.dump(topic_example, file)
@@ -117,8 +132,8 @@ class App:
             chat_message.insert(END, random_username + ": " + message + "\n")
             
             # generates a random color into hex format
-            random_font_color, random_tag_name = "", ""
             while True:
+                random_font_color, random_tag_name = "", ""
                 random_font_color = "#" + "".join([random.choice("0123456789ABCDEF") for hex in range(6)])
                 random_tag_name = random_font_color
                 
@@ -134,7 +149,7 @@ class App:
             # changes the username to the random_font_color
             chat_message.tag_config(random_tag_name, foreground=random_font_color)
             
-            root.after(60000, App.display_chat, chat_window, chat_message)
+            root.after(600000, App.display_chat, chat_window, chat_message)
    
 # creates the toggle button for general mode
 general_button = App.create_button(root)
