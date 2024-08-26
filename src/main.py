@@ -75,7 +75,6 @@ class App:
             
             random_trait = random.choice(trait_list)
             
-            # randomly selects and prints a message
             if random_trait == "general":
                 print("Generating a general message.")
                 message = Client.general_message().choices[0].message.content
@@ -85,7 +84,26 @@ class App:
             
             random_username = Client.username().choices[0].message.content
             chat_message.insert(END, random_username + ": " + message + "\n")
-            root.after(5000, App.display_chat, chat_window, chat_message)
+            
+            # generates a random color into hex format
+            random_font_color = ""
+            while random_font_color.startswith("#f") == False and random_font_color.startswith("#1") == False:
+                random_font_color = "#" + "".join([random.choice("0123456789ABCDEF") for hex in range(6)])
+                
+                if random_font_color.startswith("#f") == False and random_font_color.startswith("#1") == False:
+                    random_tag_name = random_font_color
+                    break
+            
+            # creates a tag for the username
+            idx = chat_message.index(END)
+            start_idx = float(idx) - 2.0
+            end_idx = (len(random_username) / 100.0) + start_idx
+            chat_message.tag_add(random_tag_name, str(start_idx), str(end_idx))
+            
+            # changes the username to the random_font_color
+            chat_message.tag_config(random_tag_name, foreground=random_font_color)
+            
+            root.after(10000, App.display_chat, chat_window, chat_message)
    
 # creates the toggle button for general mode
 general_button = App.create_button()

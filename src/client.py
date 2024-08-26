@@ -32,12 +32,7 @@ class Client():
         messages=[
             {
                 "role": "assistant",
-                "content": "Generate a username and return back with only the username (do not include 'Username:' in your message). The username can contain: \
-                    1. snakecase \
-                    2. camelcase \
-                    3. all uppercase \
-                    4. all lowercase \
-                    5. numbers"
+                "content": "Generate a username between 4-25 characters in length and return back with only the username (do not include 'Username:' in your message). Feel free to do whatever you want for the username; the more chaotic and funny it is, the better the username. It is heavily recommened to lowercase all the letters and include numbers, but not required."
             }
         ],
         model="gpt-3.5-turbo",
@@ -55,7 +50,7 @@ class Client():
                     2. talking about your day \
                     3. curious question about their lifestyle \
                     4. casual, funny remarks \
-                    5. a random comment about recent internet news (sourcing from Reddit or Twitter)"
+                    5. a random comment about recent internet news (sourcing from Reddit or Twitter); however, do not mention anything about any images of any kind"
             }
         ],
         model="gpt-3.5-turbo",
