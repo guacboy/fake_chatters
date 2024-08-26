@@ -3,10 +3,14 @@ from tkinter import *
 import random
 import json
 
+BACKGROUND_COLOR = "#18181a"
+FONT_COLOR = "#ffffff"
+FONT_TYPE = "Roobert"
+
 # starting menu - where you can customize what type of messages to expect
 root = Tk()
 root.geometry("480x440")
-root.config(bg="#18181a")
+root.config(bg=BACKGROUND_COLOR)
 
 data_file_path = "C:\\Users\\rattl\\Desktop\\Projects\\Python\\fake_chatters\\data\\"
 assets_file_path = "C:\\Users\\rattl\\Desktop\\Projects\\Python\\fake_chatters\\assets\\"
@@ -26,24 +30,36 @@ class App:
                     width=1000,
                     padx=20,
                     pady=20,
-                    bg="#18181a",
-                    fg="#ffffff",
-                    font="Roobert",
+                    bg=BACKGROUND_COLOR,
+                    fg=FONT_COLOR,
+                    font=FONT_TYPE,
                     spacing3=10,
                     wrap=WORD)
         return text
 
     def create_label(window):
         label = Label(window,
-                      bg="#18181a",
-                      fg="#ffffff",
-                      font="Roobert")
+                      bg=BACKGROUND_COLOR,
+                      fg=FONT_COLOR,
+                      font=FONT_TYPE)
         return label
+    
+    def create_scale(window):
+        scale = Scale(window,
+                      bg=BACKGROUND_COLOR,
+                      troughcolor=BACKGROUND_COLOR,
+                      highlightbackground=BACKGROUND_COLOR,
+                      highlightcolor=BACKGROUND_COLOR,
+                      fg=FONT_COLOR,
+                      font=FONT_TYPE,
+                      length=300,
+                      orient=HORIZONTAL)
+        return scale
     
     # default format for button
     def create_button(window):
         button = Button(window,
-                        bg="#18181a",
+                        bg=BACKGROUND_COLOR,
                         relief=FLAT,
                         compound=CENTER)
         return button
@@ -68,7 +84,7 @@ class App:
     # creates a new window for inserting personal topics
     def create_topic_window():
         topic_window = Toplevel(root,
-                                bg="#18181a")
+                                bg=BACKGROUND_COLOR)
         topic_window.geometry("480x440")
         
         topic_instruction = App.create_label(topic_window)
@@ -149,7 +165,7 @@ class App:
             # changes the username to the random_font_color
             chat_message.tag_config(random_tag_name, foreground=random_font_color)
             
-            root.after(600000, App.display_chat, chat_window, chat_message)
+            root.after((time_scale.get() * 60) * 1000, App.display_chat, chat_window, chat_message)
    
 # creates the toggle button for general mode
 general_button = App.create_button(root)
@@ -172,6 +188,18 @@ topic_button = App.create_button(root)
 topic_button.config(text="add topic",
                     command=lambda: App.create_topic_window())
 topic_button.pack()
+
+# creates the time interval scale
+time_scale_label1 = App.create_label(root)
+time_scale_label1.config(text="Time Interval b/w Messages (in seconds)")
+time_scale_label1.pack()
+time_scale_label2 = App.create_label(root)
+time_scale_label2.config(text="Min: 5 minutes; Max: 60 minutes")
+time_scale_label2.pack()
+time_scale = App.create_scale(root)
+time_scale.config(from_=5, # 5 minutes
+                   to=60) # 60 minutes
+time_scale.pack()
 
 # creates the start button
 start_button = App.create_button(root)
