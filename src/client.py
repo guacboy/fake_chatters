@@ -27,6 +27,24 @@ with open(file_path + "jerma.json", "r") as file:
     jerma_chat_example = json.load(file)
 
 class Client():
+    def username():
+        chat_completion = client.chat.completions.create(
+        messages=[
+            {
+                "role": "assistant",
+                "content": "Generate a username and return back with only the username (do not include 'Username:' in your message). The username can contain: \
+                    1. snakecase \
+                    2. camelcase \
+                    3. all uppercase \
+                    4. all lowercase \
+                    5. numbers"
+            }
+        ],
+        model="gpt-3.5-turbo",
+        )
+        
+        return chat_completion
+    
     def general_message():
         chat_completion = client.chat.completions.create(
         messages=[
@@ -57,8 +75,7 @@ class Client():
                         a. 'your mom' jokes \
                         b. 'youre short' joke \
                 Below are comments pulled from Jerma985's streams that you can refer, but not limit to, when creating your messages: \
-                    {jerma_chat_example} \
-                NOTE: Please do not refer to the streamer as 'Jerma'"
+                    {jerma_chat_example}"
             }
         ],
         model="gpt-3.5-turbo",

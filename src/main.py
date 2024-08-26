@@ -83,10 +83,9 @@ class App:
                 print("Generating a 'Jerma' message.")
                 message = Client.jerma_message().choices[0].message.content
             
-            chat_message.config(state=NORMAL)
-            chat_message.insert(END, message + "\n")
-            chat_message.config(state=DISABLED)
-            root.after(60000, App.display_chat, chat_window, chat_message)
+            random_username = Client.username().choices[0].message.content
+            chat_message.insert(END, random_username + ": " + message + "\n")
+            root.after(5000, App.display_chat, chat_window, chat_message)
    
 # creates the toggle button for general mode
 general_button = App.create_button()
