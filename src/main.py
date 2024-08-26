@@ -63,7 +63,8 @@ class App:
         App.display_chat(chat_window, chat_message)
         
     # opens a new window where the chat messages will be displayed
-    def display_chat(chat_window, chat_message):
+    def display_chat(chat_window,
+                     chat_message):
         trait_list = list()
         
         if chat_window.winfo_exists():
@@ -74,6 +75,7 @@ class App:
             
             random_trait = random.choice(trait_list)
             
+            # randomly selects and prints a message
             if random_trait == "general":
                 print("Generating a general message.")
                 message = Client.general_message().choices[0].message.content
