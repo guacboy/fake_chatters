@@ -9,7 +9,7 @@ FONT_TYPE = "Roobert"
 
 # starting menu - where you can customize what type of messages to expect
 root = Tk()
-root.geometry("480x440")
+root.geometry("480x540")
 root.config(bg=BACKGROUND_COLOR)
 
 data_file_path = "C:\\Users\\rattl\\Desktop\\Projects\\Python\\fake_chatters\\data\\"
@@ -17,6 +17,7 @@ assets_file_path = "C:\\Users\\rattl\\Desktop\\Projects\\Python\\fake_chatters\\
 
 off_image = PhotoImage(file=assets_file_path + "off-button.png")
 on_image = PhotoImage(file=assets_file_path + "on-button.png")
+topic_image = PhotoImage(file=assets_file_path + "topic-button.png")
 start_image = PhotoImage(file=assets_file_path + "start-button.png")
 
 is_general_button_on = True
@@ -60,6 +61,8 @@ class App:
     def create_button(window):
         button = Button(window,
                         bg=BACKGROUND_COLOR,
+                        activebackground=BACKGROUND_COLOR,
+                        bd=0,
                         relief=FLAT,
                         compound=CENTER)
         return button
@@ -170,13 +173,13 @@ class App:
 # creates the toggle button for general mode
 general_label = App.create_label(root)
 general_label.config(text="General Mode")
-general_label.pack()
+general_label.pack(pady=(20, 0))
 general_button = App.create_button(root)
 general_button.config(image=on_image,
                       command=lambda: App.toggle_button("general_button",
                                                         general_button,
                                                         is_general_button_on))
-general_button.pack()
+general_button.pack(pady=(0, 10))
     
 # creates the toggle button for "Jerma" mode
 jerma_label = App.create_label(root)
@@ -189,32 +192,35 @@ jerma_button.config(image=off_image,
                                                       is_jerma_button_on))
 jerma_button.pack()
 
-# creates the "add personal topic" button
-topic_label = App.create_label(root)
-topic_label.config(text="Add Your Own Topics")
-topic_label.pack()
-topic_button = App.create_button(root)
-topic_button.config(text="add topic",
-                    command=lambda: App.create_topic_window())
-topic_button.pack()
-
-# creates the time interval scale
-time_scale_label1 = App.create_label(root)
-time_scale_label1.config(text="Time Interval b/w Messages (in Minutes)")
-time_scale_label1.pack()
-time_scale_label2 = App.create_label(root)
-time_scale_label2.config(text="Min: 5 minutes; Max: 60 minutes")
-time_scale_label2.pack()
-time_scale = App.create_scale(root)
-time_scale.config(from_=5, # 5 minutes
-                   to=60) # 60 minutes
-time_scale.pack()
-
 # creates the start button
 start_button = App.create_button(root)
 start_button.config(image=start_image,
                     command=lambda: App.create_chat_window())
-start_button.pack()
+start_button.pack(side=BOTTOM,
+                  pady=(0, 20))
+
+# creates the time interval scale
+time_scale = App.create_scale(root)
+time_scale.config(from_=5, # 5 minutes
+                   to=60) # 60 minutes
+time_scale.pack(side=BOTTOM,
+                pady=(0, 20))
+time_scale_label2 = App.create_label(root)
+time_scale_label2.config(text="Min: 5 minutes; Max: 60 minutes")
+time_scale_label2.pack(side=BOTTOM)
+time_scale_label1 = App.create_label(root)
+time_scale_label1.config(text="Time Interval b/w Messages (in Minutes)")
+time_scale_label1.pack(side=BOTTOM)
+
+# creates the "add personal topic" button
+topic_button = App.create_button(root)
+topic_button.config(image=topic_image,
+                    command=lambda: App.create_topic_window())
+topic_button.pack(side=BOTTOM,
+                  pady=(0, 20))
+topic_label = App.create_label(root)
+topic_label.config(text="Add Your Own Topics")
+topic_label.pack(side=BOTTOM)
 
 if __name__ == "__main__":
     root.mainloop()
