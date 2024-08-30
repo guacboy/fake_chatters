@@ -100,15 +100,20 @@ class App:
                 trait_list.append("general")
             if is_jerma_button_on:
                 trait_list.append("jerma")
+            if is_nl_button_on:
+                trait_list.append("nl")
             
             random_trait = random.choice(trait_list)
             
             if random_trait == "general":
                 print("Generating a general message.")
                 message = Client.general_message().choices[0].message.content
-            if random_trait == "jerma":
+            elif random_trait == "jerma":
                 print("Generating a 'Jerma' message.")
                 message = Client.jerma_message().choices[0].message.content
+            elif random_trait == "nl":
+                print("Generating a 'Northernlion' message.")
+                message = Client.nl_message().choices[0].message.content
             
             random_username = Client.username().choices[0].message.content
             chat_message.insert(END, random_username + ": " + message + "\n")
