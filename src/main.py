@@ -6,6 +6,7 @@ import json
 
 # starting menu - where you can customize what type of messages to expect
 root = Tk()
+root.title("Schizo-Chat")
 root.geometry("480x540")
 root.config(bg=BACKGROUND_COLOR)
 
@@ -20,6 +21,7 @@ start_image = PhotoImage(file=assets_file_path + "start-button.png")
 
 is_general_button_on = True
 is_jerma_button_on = False
+is_nl_button_on = False
 
 class App:    
     # toggles the on/off image of the button
@@ -28,6 +30,7 @@ class App:
                       button_state: bool):
         global is_general_button_on
         global is_jerma_button_on
+        global is_nl_button_on
         
         if button_state:
             button.config(image=off_image)
@@ -36,11 +39,13 @@ class App:
         
         if button_name == "general_button":
             is_general_button_on = not is_general_button_on
-        if button_name == "jerma_button":
+        elif button_name == "jerma_button":
             is_jerma_button_on = not is_jerma_button_on
+        elif button_name == "nl_button":
+            is_nl_button_on = not is_nl_button_on
     
     # creates a new window for inserting topics
-    def create_topic_window(request):
+    def create_topic_window(request: str):
         topic_window = Toplevel(root,
                                 bg=BACKGROUND_COLOR)
         topic_window.geometry("480x440")
@@ -62,7 +67,7 @@ class App:
         topic_entry.pack()
     
     # adds the inserted topic into topic.json
-    def add_topic(request,
+    def add_topic(request: str,
                   topic_entry,
                   topic_window):
         with open(data_file_path + "topic.json", "r") as file:
@@ -71,7 +76,7 @@ class App:
         topic_example[request] = topic_entry.get("1.0", END)
         
         with open(data_file_path + "topic.json", "w") as file:
-            json.dump(topic_example, file)
+            json.dump(topic_example, file, indent=4, sort_keys=True)
         
         topic_window.destroy()
             
@@ -150,7 +155,19 @@ jerma_button.config(image=off_image,
                     command=lambda: App.toggle_button("jerma_button",
                                                       jerma_button,
                                                       is_jerma_button_on))
-jerma_button.pack()
+jerma_button.pack(pady=(0, 10))
+
+# creates the toggle button for "Northernlion" mode
+nl_label = Util.create_label(root)
+nl_label.config(text="Northernlion Mode")
+nl_label.pack()
+
+nl_button = Util.create_button(root)
+nl_button.config(image=off_image,
+                 command=lambda: App.toggle_button("nl_button",
+                                                   nl_button,
+                                                   is_nl_button_on))
+nl_button.pack()
 
 # creates the start button
 start_button = Util.create_button(root)
