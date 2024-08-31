@@ -40,7 +40,7 @@ class Client:
         messages=[
             {
                 "role": "assistant",
-                "content": "Generate a username between 4-25 characters in length and return back with only the username (do not include 'Username:' in your message). Feel free to do whatever you want for the username; the more chaotic and funny it is, the better the username. It is heavily recommened to lowercase all the letters and include numbers, but not required."
+                "content": "Generate a username between 4-25 characters in length and return back with only the username (do not include 'Username:' in your message). Feel free to do whatever you want for the username; the more chaotic and funny it is, the better the username. It is heavily recommended to lowercase all letters, but not required. You may also use include numbers, but try not to use them excessively."
             }
         ],
         model="gpt-3.5-turbo",
