@@ -162,18 +162,6 @@ jerma_button.config(image=off_image,
                                                       is_jerma_button_on))
 jerma_button.pack(pady=(0, 10))
 
-# creates the toggle button for "Northernlion" mode
-nl_label = Util.create_label(root)
-nl_label.config(text="Northernlion Mode")
-nl_label.pack()
-
-nl_button = Util.create_button(root)
-nl_button.config(image=off_image,
-                 command=lambda: App.toggle_button("nl_button",
-                                                   nl_button,
-                                                   is_nl_button_on))
-nl_button.pack()
-
 # creates the start button
 start_button = Util.create_button(root)
 start_button.config(image=start_image,
