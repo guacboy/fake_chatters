@@ -1,6 +1,3 @@
-<b>HEY YOU!</b>
-
-Are you a small streamer struggling to keep your content fresh? Do you find yourself staring at a silent chat, searching for topics but coming up empty? Don't let awkward silences stall your stream! Whether you're running low on ideas or just need some company to liven up your chat, we've got the perfect solution to keep your content engaging and your community growing! Introducing..
 <h1>
   Schizo-Chat
 </h1>
@@ -79,6 +76,9 @@ Are you a small streamer struggling to keep your content fresh? Do you find your
 <h3>
   Opening the Project File
 </h3>
+<li>
+  Open the <code>fake_chatters</code> folder (inside a terminal/code editor)
+</li>
 <li>
   Navigate to the <code>fake_chatters > src</code> folder
 </li>
