@@ -1,6 +1,3 @@
-<b>HEY YOU!</b>
-
-Are you a small streamer struggling to keep your content fresh? Do you find yourself staring at a silent chat, searching for topics but coming up empty? Don't let awkward silences stall your stream! Whether you're running low on ideas or just need some company to liven up your chat, we've got the perfect solution to keep your content engaging and your community growing! Introducing..
 <h1>
   Schizo-Chat
 </h1>
@@ -34,10 +31,10 @@ Are you a small streamer struggling to keep your content fresh? Do you find your
   Creating an OpenAI API key
 </h3>
 <li>
-  Open <a href="https://platform.openai.com/api-keys">this</a> website and click <img src=".readme_pretty/create_secret_key.png"> located on the top-right
+  Open <a href="https://platform.openai.com/api-keys">this</a> website and click <img src=".readme_pretty/create_secret_key.png" style="height: 25px"> located on the top-right
 </li>
 <li>
-  Feel free to name it whatever, then click <img src=".readme_pretty/create_secret.png"> to create your API key
+  Feel free to name it whatever, then click <img src=".readme_pretty/create_secret.png" style="height: 25px"> to create your API key
 </li>
 <ul>
   <ul>
@@ -47,12 +44,12 @@ Are you a small streamer struggling to keep your content fresh? Do you find your
   </ul>
 </ul>
 <li>
-  Copy your API key and click <img src=".readme_pretty/done.png">
+  Copy your API key and click <img src=".readme_pretty/done.png" style="height: 25px">
 </li>
 <ul>
   <ul>
     <li>
-      If you ever lose access to your API key, you can click <img src=".readme_pretty/delete.png"> on the right and follow the steps above to create a new one
+      If you ever lose access to your API key, you can click <img src=".readme_pretty/delete.png" style="height: 25px"> on the right and follow the steps above to create a new one
     </li>
   </ul>
 </ul>
@@ -79,6 +76,9 @@ Are you a small streamer struggling to keep your content fresh? Do you find your
 <h3>
   Opening the Project File
 </h3>
+<li>
+  Open the <code>fake_chatters</code> folder (inside a terminal/code editor)
+</li>
 <li>
   Navigate to the <code>fake_chatters > src</code> folder
 </li>
