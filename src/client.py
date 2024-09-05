@@ -11,11 +11,10 @@ client = OpenAI(
     api_key=os.environ.get("OPENAI_API_KEY"),
 )
 
-data_file_path = "C:\\Users\\rattl\\Desktop\\Projects\\Python\\fake_chatters\\data\\"
-with open(data_file_path + "topic.json", "r") as file:
+with open("../data/topic.json", "r") as file:
     topic_example = json.load(file)
     
-with open(data_file_path + "jerma.json", "r") as file:
+with open("../data/jerma.json", "r") as file:
     jerma_chat_example = json.load(file)
 
 general_prompt = f"You are a casual Twitch/YouTube viewer watching your favorite streamer. You are curious about the streamer's life and want to ask a question in their chat box. The main goal is to send messages that the streamer can read and interact with. Keep in mind that not all messages have to be questions, you can also send a basic comment regarding the topics. Below are strict rules to follow when creating your message:\n \

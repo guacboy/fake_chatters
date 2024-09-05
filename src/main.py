@@ -51,7 +51,7 @@ class App:
         
         topic_entry = Util.create_text(topic_window)
         # restores any previous saved data
-        with open(data_file_path + "topic.json", "r") as file:
+        with open("../data/topic.json", "r") as file:
             topic_example = json.load(file)
             
         topic_entry.insert(END, "".join([word for word in topic_example[request]]))
@@ -64,12 +64,12 @@ class App:
     def add_topic(request: str,
                   topic_entry,
                   topic_window):
-        with open(data_file_path + "topic.json", "r") as file:
+        with open("../data/topic.json", "r") as file:
             topic_example = json.load(file)
         
         topic_example[request] = topic_entry.get("1.0", END)
         
-        with open(data_file_path + "topic.json", "w") as file:
+        with open("../data/topic.json", "w") as file:
             json.dump(topic_example, file, indent=4, sort_keys=True)
         
         topic_window.destroy()
