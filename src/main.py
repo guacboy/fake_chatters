@@ -1,6 +1,7 @@
 from client import Client
 from util import Util, BACKGROUND_COLOR, FONT_COLOR, FONT_TYPE
 from tkinter import *
+from PIL import ImageTk, Image
 import random
 import json
 
@@ -10,14 +11,11 @@ root.title("Schizo-Chat")
 root.geometry("480x540")
 root.config(bg=BACKGROUND_COLOR)
 
-data_file_path = "C:\\Users\\rattl\\Desktop\\Projects\\Python\\fake_chatters\\data\\"
-assets_file_path = "C:\\Users\\rattl\\Desktop\\Projects\\Python\\fake_chatters\\assets\\"
-
-off_image = PhotoImage(file=assets_file_path + "off-button.png")
-on_image = PhotoImage(file=assets_file_path + "on-button.png")
-context_image = PhotoImage(file=assets_file_path + "context-button.png")
-about_image = PhotoImage(file=assets_file_path + "about-button.png")
-start_image = PhotoImage(file=assets_file_path + "start-button.png")
+off_image = ImageTk.PhotoImage(Image.open("assets/off-button.png"))
+on_image = ImageTk.PhotoImage(Image.open("assets/on-button.png"))
+context_image = ImageTk.PhotoImage(Image.open("assets/context-button.png"))
+about_image = ImageTk.PhotoImage(Image.open("assets/about-button.png"))
+start_image = ImageTk.PhotoImage(Image.open("assets/start-button.png"))
 
 is_general_button_on = True
 is_jerma_button_on = False
