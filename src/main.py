@@ -21,7 +21,6 @@ start_image = PhotoImage(file=assets_file_path + "start-button.png")
 
 is_general_button_on = True
 is_jerma_button_on = False
-is_nl_button_on = False
 
 class App:    
     # toggles the on/off image of the button
@@ -30,7 +29,6 @@ class App:
                       button_state: bool):
         global is_general_button_on
         global is_jerma_button_on
-        global is_nl_button_on
         
         if button_state:
             button.config(image=off_image)
@@ -41,8 +39,6 @@ class App:
             is_general_button_on = not is_general_button_on
         elif button_name == "jerma_button":
             is_jerma_button_on = not is_jerma_button_on
-        elif button_name == "nl_button":
-            is_nl_button_on = not is_nl_button_on
     
     # creates a new window for inserting topics
     def create_topic_window(request: str):
@@ -100,8 +96,6 @@ class App:
                 trait_list.append("general")
             if is_jerma_button_on:
                 trait_list.append("jerma")
-            if is_nl_button_on:
-                trait_list.append("nl")
             
             random_trait = random.choice(trait_list)
             
@@ -111,9 +105,6 @@ class App:
             elif random_trait == "jerma":
                 print("Generating a 'Jerma' message.")
                 message = Client.jerma_message().choices[0].message.content
-            elif random_trait == "nl":
-                print("Generating a 'Northernlion' message.")
-                message = Client.nl_message().choices[0].message.content
             
             random_username = Client.username().choices[0].message.content
             chat_message.insert(END, random_username + ": " + message + "\n")
