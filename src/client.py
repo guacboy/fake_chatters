@@ -18,9 +18,6 @@ with open(data_file_path + "topic.json", "r") as file:
 with open(data_file_path + "jerma.json", "r") as file:
     jerma_chat_example = json.load(file)
 
-with open(data_file_path + "nl.json", "r") as file:
-    nl_chat_example = json.load(file)
-
 general_prompt = f"You are a casual Twitch/YouTube viewer watching your favorite streamer. You are curious about the streamer's life and want to ask a question in their chat box. The main goal is to send messages that the streamer can read and interact with. Keep in mind that not all messages have to be questions, you can also send a basic comment regarding the topics. Below are strict rules to follow when creating your message:\n \
     1. Please keep your messages to a maximum of 20 words or less - the less words you use in your messages, the better.\n \
     2. Avoid asking multiple questions in one message and try to limit your topic to about one or two.\n \
@@ -84,30 +81,6 @@ class Client:
                         c. 'youre bad' jokes\n \
                 You may also refer to the 'Jerma985's stream' section inside the square brackets when selecting a topic; this should ONLY be used for further reference when creating your message - avoid copying word for word:\n \
                     Jerma985's stream: [{jerma_chat_example}]"
-            }
-        ],
-        model="gpt-3.5-turbo",
-        )
-        
-        return chat_completion
-    
-    def nl_message():
-        chat_completion = client.chat.completions.create(
-        messages=[
-            {
-                "role": "assistant",
-                "content": f"{general_prompt} You also have a debating personality. Your messages can contain controversial opinions about the real/internet-world and want to know the streamer's opinion on it. Please refer to the 'Context' section inside the square brackets, if any, when selecting a topic:\n \
-                    Context: [{topic_example["context"]}]\n \
-                If there are no topics listed above or you need further guidance, other topics may include, but not limited to:\n \
-                    1. asking a controversial question like, but not limited to:\n \
-                        a. liking something that not everyone likes\n \
-                        b. item A being better than item B\n \
-                        c. unpopular opinions\n \
-                    2. poking fun at the streamer with jokes like, but not limited to:\n \
-                        a. 'youre bald' jokes\n \
-                        b. 'youre bad' jokes\n \
-                You may also refer to the 'Northernlion's stream' section inside the square brackets when selecting a topic; this should ONLY be used for further reference when creating your message - avoid copying word for word:\n \
-                    Northernlion's stream: [{nl_chat_example}]"
             }
         ],
         model="gpt-3.5-turbo",
