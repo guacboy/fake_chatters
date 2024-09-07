@@ -67,7 +67,7 @@ class App:
         with open("../data/topic.json", "r") as file:
             topic_example = json.load(file)
         
-        topic_example[request] = topic_entry.get("1.0", END)
+        topic_example[request] = topic_entry.get("1.0", END).strip()
         
         with open("../data/topic.json", "w") as file:
             json.dump(topic_example, file, indent=4, sort_keys=True)
@@ -114,7 +114,7 @@ class App:
                 message = Client.jerma_message().choices[0].message.content
             
             random_username = Client.username().choices[0].message.content
-            chat_message.insert(END, random_username + ": " + message + "\n")
+            chat_message.insert(END, random_username.strip() + ": " + message.strip() + "\n")
             
             # creates a tag for the username
             idx = chat_message.index(END)
