@@ -90,6 +90,15 @@ class App:
         trait_list = list()
         
         if chat_window.winfo_exists():
+            # generates a random color into hex format
+            while True:
+                random_font_color, random_tag_name = "", ""
+                random_font_color = "#" + "".join([random.choice("0123456789ABCDEF") for hex in range(6)])
+                random_tag_name = random_font_color
+                
+                if random_font_color.startswith("#f") == False and random_font_color.startswith("#1") == False:
+                    break
+            
             if is_general_button_on:
                 trait_list.append("general")
             if is_jerma_button_on:
@@ -106,15 +115,6 @@ class App:
             
             random_username = Client.username().choices[0].message.content
             chat_message.insert(END, random_username + ": " + message + "\n")
-            
-            # generates a random color into hex format
-            while True:
-                random_font_color, random_tag_name = "", ""
-                random_font_color = "#" + "".join([random.choice("0123456789ABCDEF") for hex in range(6)])
-                random_tag_name = random_font_color
-                
-                if random_font_color.startswith("#f") == False and random_font_color.startswith("#1") == False:
-                    break
             
             # creates a tag for the username
             idx = chat_message.index(END)
