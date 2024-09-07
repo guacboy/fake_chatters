@@ -126,11 +126,17 @@ class App:
             chat_message.tag_config(random_tag_name, foreground=random_font_color)
             
             root.after((time_scale.get() * 60) * 1000, App.display_chat, chat_window, chat_message)
-   
+
+# title
+title_label = Util.create_label(root)
+title_label.config(text="Schizo-Chat",
+                   font=(FONT_TYPE, 25))
+title_label.pack(pady=(20, 0))
+
 # creates the toggle button for general mode
 general_label = Util.create_label(root)
 general_label.config(text="General Mode")
-general_label.pack(pady=(20, 0))
+general_label.pack(pady=(10, 0))
 
 general_button = Util.create_button(root)
 general_button.config(image=on_image,
