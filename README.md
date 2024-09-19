@@ -99,7 +99,6 @@
     </li>
   </ul>
 </ul>
-<br>
 and voilà! Project should now open.
 <h2>
   License and Source
