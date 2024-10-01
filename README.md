@@ -2,6 +2,12 @@
   Schizo-Chat
 </h1>
 <h2>
+  Requirement
+</h2>
+<li>
+  <a href="https://openai.com/api/pricing/">OpenAI</a> subscription
+</li>
+<h2>
   Setting up the Project File
 </h2>
 <h3>
@@ -103,7 +109,7 @@ and voilà! Project should now open.
 <h2>
   License and Source
 </h2>
-This project is distributed under the terms of the MIT license, as described in the <a href="https://github.com/guacboy/fake_chatters/blob/main/LICENSE">LICENSE.md</a> file. The data collected for this project is available in the link(s) provided below:
+This project is distributed under the terms of the MIT license, as described in the <a href="https://github.com/guacboy/fake_chatters/blob/main/LICENSE">LICENSE.md</a> file. The data collected for this project is available in the link provided below:
 <li>
   https://www.youtube.com/playlist?list=PL3loRFGguUrMsi9QKbKSP9cJ2k2ufopuS <i>(Jerma985's Chat)</i>
 </li>
