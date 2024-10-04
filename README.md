@@ -1,6 +1,7 @@
 <h1>
   Schizo-Chat
 </h1>
+I have no idea how to add an embedded video, so just click <a href="https://www.youtube.com/watch?v=ZkgAgmLlaiI">this</a> to learn about the project.
 <h2>
   Requirement
 </h2>
