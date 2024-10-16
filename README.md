@@ -1,6 +1,15 @@
 <h1>
   Schizo-Chat
 </h1>
+This program enables users to generate customizable live chat messages powered by OpenAI, offering two distinct modes:
+
+- **General Mode**: A standard chat box with general conversational messages.
+- **Jerma Mode**: A playful, modified chat box with unconventional and quirky messages.
+
+Key features include:
+- The option to add custom topics for the AI to tailor messages.
+- An "About Me" page to provide context about the user.
+- Adjustable time intervals for message frequency.
 <h2>
   Requirement
 </h2>
